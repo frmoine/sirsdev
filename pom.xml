@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <prerequisites>
+    <maven>3.0.2</maven>
+  </prerequisites>
+
+  <groupId>fr.sirs</groupId>
+    <artifactId>sirs</artifactId>
+    <packaging>pom</packaging>
+    <version>2.x-SNAPSHOT</version>
+  <name>SIRS</name>
+
+  <organization>
+    <name>Geomatys</name>
+  </organization>
+
+  <!-- =========================================================== -->
+  <!-- Global project parameters -->
+  <!-- =========================================================== -->
+  <properties>
+    <!-- Define parent projects versions -->
+    <slf4j.version>1.7.7</slf4j.version>
+    <sis.version>0.8-jdk7-M1</sis.version>
+    <geotoolkit.version>4.0.5</geotoolkit.version>
+    <geotoolkit.esri.version>2.0.0-MC0004</geotoolkit.esri.version>
+    <geotoolkit.h2.version>2.0.0-MC0004</geotoolkit.h2.version>
+    <jai.version>1.1.4</jai.version>
+    <jai-io.version>1.1.1</jai-io.version>
+    <project.encoding>UTF-8</project.encoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>4.1.0.RELEASE</spring.version>
+    <ektorp.version>1.4.4</ektorp.version>
+  </properties>
+
+
+  <!-- External dependencies inherited by all modules. -->
+  <dependencies>
+      <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+
+    <dependency>
+	<groupId>org.slf4j</groupId>
+	<artifactId>jul-to-slf4j</artifactId>
+	<version>${slf4j.version}</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+  <!-- Optional dependencies. These dependencies are not automatically inherited
+    by parameters modules. But if a child module declare one of those dependencies
+    without specifying any number of version, then the version by default will
+    be the one declared below. -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.derby</groupId>
+        <artifactId>derby</artifactId>
+        <version>10.10.2.0</version>
+      </dependency>
+      <dependency>
+        <groupId>postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>9.3-1101-jdbc41</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.odftoolkit</groupId>
+        <artifactId>simple-odf</artifactId>
+        <version>0.8.1-incubating</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>1.8.9</version>
+      </dependency>
+      <!-- Force newer version of controlsfx to avoid jre version checking error -->
+      <dependency>
+          <groupId>org.controlsfx</groupId>
+          <artifactId>controlsfx</artifactId>
+          <version>8.40.11</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+
+
+  <!-- Repositories where to find dependencies. A directory http://*.maven.org/
+    is implicit. One can find the necessary dependencies for Maven itself, and
+    some usual dependencies as the JDBC driver for PostgreSQL. The directory
+    "GeotoolKit" contains JARs of GeotoolKit as well as some needed dependencies
+    for GeotoolKit but not published on the Maven repository, for example the
+    UCAR library for the reading of NetCDF files. -->
+  <repositories>
+    <repository>
+      <id>geotoolkit</id>
+      <name>GeoToolkit repository</name>
+      <url>http://maven.geotoolkit.org</url>
+    </repository>
+    <repository>
+      <id>geomatys.public</id>
+      <name>Builds from Geomatys</name>
+      <url>https://nexus.geomatys.com/repository/maven-public</url>
+    </repository>
+    <repository>
+      <id>geomatys.private</id>
+      <url>https://nexus.geomatys.com/repository/maven-private</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>geomatys.public</id>
+      <name>geomatys</name>
+      <url>https://nexus.geomatys.com/repository/maven-public</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <!-- Configuration of the compiler and archiver. For each JAR file, an
+    entry "class-path" will be added in "META-INF/MANIFEST.MF" with the list
+    of every used dependencies. Furthermore, these dependencies will be copied
+    in the directory "target/binaries" for convenience (this task is done by
+    an owned Geotools' plugin). These combined functionnalites allow to launch
+    an application easily by specifying the final JAR, without specifying any
+    dependencies in the "classpath". http://maven.apache.org/plugins/index.html
+    http://repo1.maven.org/maven2/org/apache/maven/plugins/ -->
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.4</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.6</version>
+        </plugin>
+        <plugin>
+          <groupId>com.zenjava</groupId>
+          <artifactId>javafx-maven-plugin</artifactId>
+          <version>8.2.0</version>
+        </plugin>
+        <plugin>
+          <groupId>fr.sirs.maven</groupId>
+          <artifactId>gen-maven-plugin</artifactId>
+          <version>2.x-SNAPSHOT</version>
+        <configuration>
+            <bundleArguments>
+                <installdirChooser>true</installdirChooser>
+            </bundleArguments>
+        </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>        <!-- The -source argument for the Java compiler. -->
+          <target>1.8</target>        <!-- The -target argument for the Java compiler. -->
+          <debug>true</debug>         <!-- Whether to include debugging information. -->
+          <optimize>true</optimize>   <!-- Whether to optimize the compiled code. -->
+          <encoding>${project.encoding}</encoding>  <!-- The -encoding argument for the Java compiler. -->
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.1</version>
+        <configuration>
+          <!-- Default configuration for all reports -->
+            <excludePackageNames>org.geotoolkit.*:org.apache.*</excludePackageNames>
+        </configuration>
+        <executions>
+          <execution>
+            <id>aggregate</id>
+            <goals>
+              <goal>aggregate</goal>
+            </goals>
+            <phase>site</phase>
+            <configuration>
+              <!-- Specific configuration for the aggregate report -->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Force jar packager to properly set META-INF version as maven project. -->
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <configuration>
+              <archive>
+                  <manifest>
+                      <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                      <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                  </manifest>
+              </archive>
+          </configuration>
+      </plugin>
+
+    </plugins>
+
+
+  </build>
+
+  <profiles>
+     <profile>
+        <id>all</id>
+        <modules>
+           <module>plugin-reglementary</module>
+           <module>plugin-vegetation</module>
+           <module>plugin-document</module>
+           <module>plugin-aot-cot</module>
+           <module>plugin-berge</module>
+           <module>plugin-lit</module>
+           <module>plugin-dependance</module>
+           <module>plugin-carto</module>
+           <module>plugin-synchro</module>
+        </modules>
+     </profile>
+  </profiles>
+
+  <modules>
+    <module>gen-maven-plugin</module>
+    <module>sirs-core</module>
+    <module>desktop</module>
+    <module>launcher</module>
+  </modules>
+
+</project>

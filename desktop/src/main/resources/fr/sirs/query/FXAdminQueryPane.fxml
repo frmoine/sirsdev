@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <children>
+            <Label contentDisplay="CENTER" text="Requêtes locales">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <ListView fx:id="uiLocalList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+            <HBox maxWidth="1.7976931348623157E308" spacing="5.0">
+               <children>
+                  <Button fx:id="uiDeleteLocalBtn" mnemonicParsing="false" text="Supprimer" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="uiToDatabaseBtn" mnemonicParsing="false" onAction="#localToDatabase" text="&gt;&gt;" />
+            <Button fx:id="uiToLocalBtn" mnemonicParsing="false" onAction="#databaseToLocal" text="&lt;&lt;" />
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </VBox>
+   </center>
+   <right>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <children>
+            <Label text="Requêtes en base de données">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <ListView fx:id="uiDBList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER" />
+            <HBox maxWidth="1.7976931348623157E308" spacing="5.0">
+               <children>
+                  <Button fx:id="uiDeleteDBBtn" mnemonicParsing="false" text="Supprimer" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </right>
+   <bottom>
+      <BorderPane fx:id="uiBottomPane" maxWidth="1.7976931348623157E308" BorderPane.alignment="TOP_LEFT" />
+   </bottom>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</fx:root>

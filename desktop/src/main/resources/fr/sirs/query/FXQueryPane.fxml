@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+
+<fx:root spacing="2.5" type="VBox" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Libellé :" />
+      <TextField fx:id="uiLibelle" maxWidth="1.7976931348623157E308" />
+      <Label text="Description :">
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </Label>
+      <TextArea fx:id="uiDesc" maxWidth="1.7976931348623157E308" />
+      <Label text="Requête SQL :">
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </Label>
+      <TextArea fx:id="uiSql" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="SOMETIMES" />
+   </children>
+   <padding>
+      <Insets bottom="2.5" left="2.5" right="2.5" />
+   </padding>
+</fx:root>

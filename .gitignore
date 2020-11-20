@@ -1,0 +1,28 @@
+data/
+*~
+//eclipse
+sirs-core/src/main/resources/fr/sirs/core/model/Utilisateur.properties
+
+*.log
+.classpath
+.project
+.settings/
+.metadata/
+
+.DS_Store
+.hg
+.hgtags
+.hgignore
+
+# Maven files
+target/
+dependency-reduced-pom.xml
+
+# Netbeans files
+nbactions.xml
+nb-configuration.xml
+nbproject/
+
+# IntelliJ files
+.idea/
+*.iml

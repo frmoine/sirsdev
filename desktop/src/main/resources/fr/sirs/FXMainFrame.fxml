@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1024.0" stylesheets="@/fr/sirs/theme.css" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+      <BorderPane>
+         <top>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <HBox VBox.vgrow="NEVER">
+                     <children>
+                          <MenuBar fx:id="uiMenu" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                              <menus>
+                                  <Menu mnemonicParsing="false" text="%file">
+                                      <items>
+                                          <MenuItem fx:id="uiPref" mnemonicParsing="false" onAction="#openPref" text="%preferences" />
+                                    <MenuItem mnemonicParsing="false" onAction="#clearCache" text="%clearCache" />
+                                    <Menu mnemonicParsing="false" text="%synchroMenu">
+                                      <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#checkReferences" text="%checkReferences" />
+                                        <MenuItem fx:id="uiSynchroDb" mnemonicParsing="false" text="%checkDistantDb" />
+                                      </items>
+                                    </Menu>
+                                    <MenuItem fx:id="uiCompte" mnemonicParsing="false" onAction="#openCompte" text="%count" />
+                                    <MenuItem mnemonicParsing="false" onAction="#changeUser" text="%changeUser" />
+                                    <MenuItem fx:id="uiDeconnect" mnemonicParsing="false" onAction="#deconnect" text="%changeDB" />
+                                          <MenuItem fx:id="uiExit" mnemonicParsing="false" onAction="#exit" text="%exit" />
+                                      </items>
+                                  </Menu>
+                              <Menu mnemonicParsing="false" text="%print">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#disorderPrint" text="%disorderPrint" />
+                                    <MenuItem mnemonicParsing="false" onAction="#reseauFermePrint" text="%reseauFermePrint" />
+                                    <MenuItem mnemonicParsing="false" onAction="#ouvrageAssociePrint" text="%ouvrageAssociePrint" />
+                                    <Menu mnemonicParsing="false" text="%templatesPrint">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#elementModelPrint" text="%elementModels" />
+                                          <MenuItem mnemonicParsing="false" onAction="#reportPrint" text="%reportModels" />
+                                      </items>
+                                    </Menu>
+                                </items>
+                              </Menu>
+                                  <Menu mnemonicParsing="false" text="%help">
+                                      <items>
+                                          <MenuItem mnemonicParsing="false" onAction="#showUserGuide" text="%userGuide" />
+                                          <MenuItem mnemonicParsing="false" onAction="#openAppInfo" text="%about" />
+                                    <MenuItem mnemonicParsing="false" onAction="#openModel" text="%model" />
+                                      </items>
+                                  </Menu>
+                              </menus>
+                          </MenuBar>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                                <Button fx:id="uiMapButton" contentDisplay="TOP" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#openMap" styleClass="buttonbar-button" text="%carto">
+                                    <graphic>
+                                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/menu-carto.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button fx:id="uiDamButton" contentDisplay="TOP" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#openDigueTab" styleClass="buttonbar-button" text="%structures" textAlignment="CENTER" translateX="5.0">
+                                    <graphic>
+                                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/menu-digue.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <VBox translateX="10.0">
+                                    <children>
+                                        <MenuButton fx:id="uiThemesLocalized" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="buttonbar-button" text="%localizedThemes" VBox.vgrow="ALWAYS">
+                                            
+                                        </MenuButton>
+                                        <MenuButton fx:id="uiThemesUnlocalized" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="buttonbar-button" text="%unlocalizedThemes" VBox.vgrow="ALWAYS">
+                                            
+                                        </MenuButton>
+                                    </children>
+                                </VBox>
+                        <VBox prefHeight="71.0">
+                           <children>
+                              <MenuButton fx:id="uiPlugins" alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="135.0" styleClass="buttonbar-button" text="%pluginsThemes" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" VBox.vgrow="ALWAYS">
+                                 <graphic>
+                                    <ImageView fx:id="uiPluginsImg" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/menu-modules.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </MenuButton>
+                           </children>
+                        </VBox>
+                        <HBox fx:id="uiToolBarPlugins" HBox.hgrow="ALWAYS" />
+                        <Button contentDisplay="TOP" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#openSearchTab" styleClass="buttonbar-button" text="%search">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/menu-search.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                                <Button fx:id="uiPrintButton" alignment="CENTER" contentDisplay="TOP" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#print" styleClass="buttonbar-button" text="%print">
+                                    <graphic>
+                                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/menu-print.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+      </BorderPane>
+    </top>
+    <center>
+        <BorderPane BorderPane.alignment="CENTER">
+            <center>
+                <TabPane fx:id="uiTabs" BorderPane.alignment="CENTER" />
+            </center>
+        </BorderPane>
+    </center>
+   <bottom>
+      <BorderPane BorderPane.alignment="CENTER">
+         <center>
+            <HBox alignment="CENTER_RIGHT" styleClass="bottom-bar" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton fx:id="uiAlertsBtn" mnemonicParsing="false" styleClass="btn-without-style" text="alertes" />
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </bottom>
+</fx:root>

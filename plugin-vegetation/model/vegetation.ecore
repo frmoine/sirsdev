@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="vegetation" nsURI="http://fr.sirs/vegetation" nsPrefix="veg">
+  <eClassifiers xsi:type="ecore:EClass" name="ArbreVegetation" eSuperTypes="#//ZoneVegetation">
+    <eAnnotations source="couchDBDocument"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hauteurId" eType="#//RefHauteurVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="diametreId" eType="#//RefDiametreVegetation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PeuplementVegetation" eSuperTypes="#//ZoneVegetation">
+    <eAnnotations source="couchDBDocument"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeVegetationId" eType="#//RefTypePeuplementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="densite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hauteur" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diametre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InvasiveVegetation" eSuperTypes="#//ZoneVegetation">
+    <eAnnotations source="couchDBDocument"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="densiteId" eType="#//RefDensiteVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeVegetationId" eType="#//RefTypeInvasiveVegetation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HerbaceeVegetation" eSuperTypes="#//ZoneVegetation">
+    <eAnnotations source="couchDBDocument"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlanVegetation">
+    <eAnnotations source="couchDBDocument"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="designation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anneeDebut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="anneeFin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="libelle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paramCout" upperBound="-1"
+        eType="#//ParamCoutTraitementVegetation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paramFrequence" upperBound="-1"
+        eType="#//ParamFrequenceTraitementVegetation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParcelleVegetation" eSuperTypes="../../sirs-core/model/sirs.ecore#//Objet">
+    <eAnnotations source="couchDBDocument"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="traitements" upperBound="-1"
+        eType="#//TraitementParcelleVegetation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modeAuto" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="planifications" upperBound="10"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="planId" eType="#//PlanVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="libelle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TraitementParcelleVegetation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="designation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="quantite" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="localDate"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeTraitementId" eType="#//RefTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sousTypeTraitementId" eType="#//RefSousTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="prestation" eType="ecore:EClass ../../sirs-core/model/sirs.ecore#//Prestation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefTraitementVegetation" eSuperTypes="../../sirs-core/model/sirs.ecore#//ReferenceType">
+    <eAnnotations source="couchDBDocument"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ponctuel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefSousTraitementVegetation" eSuperTypes="../../sirs-core/model/sirs.ecore#//ReferenceType">
+    <eAnnotations source="couchDBDocument"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeTraitementId" eType="#//RefTraitementVegetation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GeometryType">
+    <eLiterals name="PONCTUAL"/>
+    <eLiterals name="LINEAR"/>
+    <eLiterals name="AREAL"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PositionableVegetation" abstract="true"
+      eSuperTypes="../../sirs-core/model/sirs.ecore#//Positionable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="geometryType" eType="#//GeometryType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="explicitGeometry" eType="ecore:EDataType ../../sirs-core/model/jts.ecore#//Geometry"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distanceDebutMin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distanceDebutMax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distanceFinMin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="distanceFinMax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parcelleId" eType="#//ParcelleVegetation">
+      <eAnnotations source="foreignParent"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefDiametreVegetation" eSuperTypes="../../sirs-core/model/sirs.ecore#//ReferenceType">
+    <eAnnotations source="couchDBDocument"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefHauteurVegetation" eSuperTypes="../../sirs-core/model/sirs.ecore#//ReferenceType">
+    <eAnnotations source="couchDBDocument"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefDensiteVegetation" eSuperTypes="../../sirs-core/model/sirs.ecore#//ReferenceType">
+    <eAnnotations source="couchDBDocument"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefTypeInvasiveVegetation" eSuperTypes="#//TypeZoneVegetation">
+    <eAnnotations source="couchDBDocument"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefTypePeuplementVegetation" eSuperTypes="#//TypeZoneVegetation">
+    <eAnnotations source="couchDBDocument"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamCoutTraitementVegetation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="designation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeTraitementId" eType="#//RefTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sousTypeTraitementId" eType="#//RefSousTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefFrequenceTraitementVegetation" eSuperTypes="../../sirs-core/model/sirs.ecore#//ReferenceType">
+    <eAnnotations source="couchDBDocument"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="frequence" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ZoneVegetation" abstract="true" eSuperTypes="#//PositionableVegetation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contactEau" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="traitement" lowerBound="1"
+        eType="#//TraitementZoneVegetation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typePositionId" eType="ecore:EClass ../../sirs-core/model/sirs.ecore#//RefPosition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeCoteId" eType="ecore:EClass ../../sirs-core/model/sirs.ecore#//RefCote"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date_debut" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="localDate"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date_fin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="localDate"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TraitementZoneVegetation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeTraitementPonctuelId"
+        eType="#//RefTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sousTypeTraitementPonctuelId"
+        eType="#//RefSousTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeTraitementId" eType="#//RefTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sousTypeTraitementId" eType="#//RefSousTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="frequenceId" eType="#//RefFrequenceTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="designation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="horsGestion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeZoneVegetation" abstract="true"
+      eSuperTypes="../../sirs-core/model/sirs.ecore#//ReferenceType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamFrequenceTraitementVegetation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="designation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeVegetationId" eType="#//TypeZoneVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeTraitementId" eType="#//RefTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sousTypeTraitementId" eType="#//RefSousTraitementVegetation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="frequenceId" eType="#//RefFrequenceTraitementVegetation"/>
+  </eClassifiers>
+</ecore:EPackage>

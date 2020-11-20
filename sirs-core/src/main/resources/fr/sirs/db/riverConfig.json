@@ -1,0 +1,19 @@
+{
+    "path": {
+        "home": "$DC"
+    },
+    "type": "couchdb",
+    "couchdb": {
+        "ignore_attachments":true,
+        "host"    : "$dbHost",
+        "port"    : "$dbPort",
+        "db"      : "$dbName",
+        "filter"  : null,
+        "user"    : "$user",
+        "password": "$password"
+    },
+    "index": {
+        "index" : "_river",
+        "type"  : "$dbName"
+    }
+}

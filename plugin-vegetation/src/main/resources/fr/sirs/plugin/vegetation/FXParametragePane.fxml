@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root id="SplitPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" type="SplitPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <items>
+       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+          <center>
+             <ListView fx:id="uiPlanList" BorderPane.alignment="CENTER" />
+          </center>
+         <top>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                         <Label text="Plans de gestion" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <font>
+                               <Font name="System Bold" size="13.0" />
+                            </font>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                         </Label>
+                     </children>
+                  </AnchorPane>
+                   <HBox style="-fx-background-radius: 5 0 0 0;" styleClass="buttonbarfull">
+                      <children>
+                         <Button fx:id="uiAdd" mnemonicParsing="false" styleClass="buttonbar-button" />
+                         <Button fx:id="uiDuplicate" mnemonicParsing="false" styleClass="buttonbar-button" />
+                         <Button fx:id="uiDelete" mnemonicParsing="false" styleClass="buttonbar-button" />
+                      </children>
+                      <opaqueInsets>
+                         <Insets />
+                      </opaqueInsets>
+                      <padding>
+                         <Insets left="4.0" right="4.0" top="4.0" />
+                      </padding>
+                   </HBox>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+         </top>
+       </BorderPane>
+    </items>
+</fx:root>
